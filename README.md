@@ -1,18 +1,41 @@
-# Maze Solver using A* Search
+<div align="center">
+
+# 🤖 RescueBot
+### Intelligent Escape Route Finder Using A* Search
+
+**Find the shortest route. Navigate obstacles. Visualize the search.**
 
 ![tests](https://github.com/yasmeenmh90-beep/Syntecxhub_Maze_Solver/actions/workflows/tests.yml/badge.svg)
-![python](https://img.shields.io/badge/python-3.9%2B-blue)
-![dependencies](https://img.shields.io/badge/dependencies-none-brightgreen)
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
+![Algorithm](https://img.shields.io/badge/Algorithm-A%2A_Search-7C3AED)
+![Dependencies](https://img.shields.io/badge/Dependencies-Standard_Library_Only-059669)
+![Tests](https://img.shields.io/badge/Tests-31_Passed-16A34A)
 
-**Syntecxhub AI Internship — Week 1, Project 1**
+**Syntecxhub Internship · Artificial Intelligence · Week 1 · Project 1**
 
-A dependency-free Python package that finds the shortest path through a grid maze with **A\* search**, compares it against four other search algorithms, generates random mazes, and produces **animated SVG visualisations** that replay the search step by step.
+</div>
 
-<p align="center">
-  <img src="docs/astar_animated.svg" alt="Animated A* search on a 12x20 maze" width="720">
-</p>
+---
 
-## Project requirements
+## 🌟 Overview
+
+Imagine a rescue robot navigating blocked corridors to reach an emergency exit.
+
+**RescueBot** demonstrates this scenario using **A\* search**. It finds the shortest path through a maze while avoiding walls, reports when no escape route exists, and compares A\* against four other search algorithms. It can generate new mazes and produces **animated SVG visualisations** that replay the search step by step.
+
+The rescue scenario is an educational simulation using a static grid. The package (`astar_maze`) uses only the Python standard library.
+
+## 🖼️ Solution preview
+
+<div align="center">
+
+<img src="docs/rescue_solution.svg" alt="RescueBot finding the shortest escape route through a 10 by 10 maze" width="560">
+
+**Rescue maze: 18 moves from entrance to exit** (animated: explored cells first, then the route)
+
+</div>
+
+## ✅ Project requirements
 
 | Requirement | Where it is implemented |
 |---|---|
@@ -21,7 +44,7 @@ A dependency-free Python package that finds the shortest path through a grid maz
 | Return the shortest path and handle unreachable cases | `solve()` returns a `SearchResult` with `path`, `cost`, `steps`; `path is None` when the goal is unreachable |
 | Visualise the search and final path (console or plot) | `astar_maze/visualize.py` — coloured console view, static SVG and animated SVG |
 
-## Features
+## ✨ Features
 
 - **A\*** with lazy-deletion priority queue and goal-directed tie-breaking.
 - **Five algorithms** behind one API: A\*, weighted A\*, Dijkstra, greedy best-first, breadth-first search.
@@ -34,7 +57,7 @@ A dependency-free Python package that finds the shortest path through a grid maz
 - **31 unit tests** including randomised cross-checks against BFS and Dijkstra; CI on Python 3.9–3.13.
 - No third-party packages.
 
-## Quick start
+## 🚀 Quick start
 
 Requires Python 3.9 or newer.
 
@@ -66,7 +89,7 @@ S * # - -
 
 Optional: `pip install .` installs an `astar-maze` command that works the same as `python3 maze_solver.py`.
 
-## Usage
+## 🛠️ Usage
 
 The CLI has three commands. If no command is given, `solve` is used.
 
@@ -123,7 +146,7 @@ print(result.found, result.steps, result.cost, result.nodes_expanded)
 print(result.path)          # list of (row, col) or None if unreachable
 ```
 
-## Maze formats
+## 🧱 Maze formats
 
 **JSON** — `0` is open, `1` is a wall, coordinates are `[row, column]` from the top-left:
 
@@ -141,7 +164,7 @@ S..#
 
 `#` wall · `.` open · `S` start · `G` goal
 
-## How A* works
+## 🧭 How A* works
 
 The maze is a graph: each open cell is a node, and each legal move to a neighbouring open cell is an edge (cost 1 orthogonally, √2 diagonally).
 
@@ -174,7 +197,7 @@ f(n) = g(n) + h(n)
 | Chebyshev | `max(abs(dr), abs(dc))` | admissible | admissible |
 | Zero | `0` | A\* becomes Dijkstra | A\* becomes Dijkstra |
 
-## Algorithm comparison
+## 📊 Algorithm comparison
 
 `python3 maze_solver.py compare --maze examples/obstacles_25x25.txt` (25×25 grid, 448 open cells, 4-way movement):
 
@@ -188,7 +211,7 @@ f(n) = g(n) + h(n)
 
 A\* returns an optimal path while expanding about **84% fewer nodes** than Dijkstra and BFS, which explore almost every reachable cell. Greedy best-first and weighted A\* expand slightly fewer nodes but return a longer path, illustrating the speed–optimality trade-off. Runtimes are printed by the command but depend on the machine, so they are not listed here.
 
-## Visualisation
+## 🎨 Visualisation
 
 | Output | How to get it |
 |---|---|
@@ -196,9 +219,11 @@ A\* returns an optimal path while expanding about **84% fewer nodes** than Dijks
 | Static SVG | `--svg out.svg` |
 | Animated SVG | `--svg out.svg --animate` — explored cells light up in expansion order, then the path is drawn |
 
+<p align="center"><img src="docs/astar_animated.svg" alt="Animated A* search on a generated 12x20 maze" width="720"></p>
+
 Open SVG files in any web browser. Examples are in [`docs/`](docs/), including one animation per algorithm in [`docs/compare/`](docs/compare/).
 
-## Project structure
+## 📁 Project structure
 
 ```text
 .
@@ -217,7 +242,7 @@ Open SVG files in any web browser. Examples are in [`docs/`](docs/), including o
 └── .github/workflows/tests.yml
 ```
 
-## Testing
+## 🧪 Testing
 
 ```bash
 python3 -m unittest discover -s tests -v
@@ -232,12 +257,12 @@ The suite covers:
 - Unreachable goals, start = goal, invalid mazes, file round-trips, generator connectivity and reproducibility.
 - CLI commands, exit codes and well-formed SVG output.
 
-## Possible extensions
+## 🔭 Possible extensions
 
 - Weighted terrain (cells with different traversal costs).
 - Bidirectional A\* or Jump Point Search for large open grids.
 - Interactive editor (e.g. Pygame or a web front end) to draw walls and watch the search live.
 
-## Reference
+## 📚 Reference
 
 Hart, P. E., Nilsson, N. J., & Raphael, B. (1968). *A Formal Basis for the Heuristic Determination of Minimum Cost Paths.* IEEE Transactions on Systems Science and Cybernetics, 4(2), 100–107.
