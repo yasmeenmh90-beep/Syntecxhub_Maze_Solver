@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astar-maze"
+version = "2.0.0"
+description = "Shortest-path maze solver using A* search, with algorithm comparison, maze generation and animated SVG visualisation."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Yasmeen Azmat Ali" }]
+keywords = ["a-star", "pathfinding", "maze", "search", "artificial-intelligence"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.scripts]
+astar-maze = "astar_maze.cli:main"
+
+[tool.setuptools]
+packages = ["astar_maze"]
